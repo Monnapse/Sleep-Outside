@@ -50,3 +50,14 @@ export function convertToJson(res) {
     throw new Error("Bad Response");
   }
 }
+
+
+export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = true) {
+  const htmlStrings = list.map(templateFn);
+
+  if (clear) {
+    parentElement.innerHTML = "";
+  }
+  
+  parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
+}
