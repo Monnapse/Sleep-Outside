@@ -21,3 +21,43 @@ export function setClick(selector, callback) {
   });
   qs(selector).addEventListener("click", callback);
 }
+
+export function getParam(param) {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const product = urlParams.get(param);
+  return product;
+}
+
+export function addProductToCart(product) {
+  // Check if item isnt already in the cart
+  const cartItems = getLocalStorage("so-cart") || [];
+  let found = false;
+
+  cartItems.map((cartProduct, index) => {
+    if (cartProduct.Id == product.Id) found = true;
+  });
+
+  if (found === true) return;
+
+  setLocalStorage("so-cart", [...cartItems, product]);
+}
+
+export function convertToJson(res) {
+  if (res.ok) {
+    return res.json();
+  } else {
+    throw new Error("Bad Response");
+  }
+}
+
+
+export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = true) {
+  const htmlStrings = list.map(templateFn);
+
+  if (clear) {
+    parentElement.innerHTML = "";
+  }
+  
+  parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
+}
