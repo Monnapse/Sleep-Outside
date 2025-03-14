@@ -4,6 +4,7 @@ function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
   let cartTotal = 0;
   const htmlItems = cartItems.map((item) => {
+    if (!item?.Id) return;
     cartTotal += item?.FinalPrice;
     return cartItemTemplate(item);
   });
