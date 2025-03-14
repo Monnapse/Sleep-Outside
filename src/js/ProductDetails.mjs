@@ -11,13 +11,13 @@ export default class ProductDetails {
   async init() {
     document
       .getElementById("addToCart")
-      .addEventListener("click", this.addToCart);
+      .addEventListener("click", this.addToCart.bind(this));
 
     // Get Product Data
     await this.getProductData();
   }
 
-  getData() {
+  async getData() {
     return fetch(this?.dataSource?.path)
       .then(convertToJson)
       .then((data) => data);
@@ -25,11 +25,13 @@ export default class ProductDetails {
 
   async getProductData() {
     const data = await this.getData();
-    this.product = data.find((item) => item.Id === this.productId);
+    //console.log(data, this.productId)
+    this.product = data.find((item) => item.Id === this.productId? item : null);
   }
 
   async addToCart() {
-    addProductToCart({ Id: this.productId });
+    console.log(this.product);
+    addProductToCart(this.product);
   }
 
   renderProductDetails() {

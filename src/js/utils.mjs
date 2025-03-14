@@ -30,15 +30,18 @@ export function getParam(param) {
 }
 
 export function addProductToCart(product) {
+  console.log("Adding to cart", product);
   // Check if item isnt already in the cart
   const cartItems = getLocalStorage("so-cart") || [];
   let found = false;
 
   cartItems.map((cartProduct, index) => {
-    if (cartProduct.Id == product.Id) found = true;
+    if (cartProduct.Id == product.Id) {found = true};
   });
 
   if (found === true) return;
+
+  console.log(product);
 
   setLocalStorage("so-cart", [...cartItems, product]);
 }
