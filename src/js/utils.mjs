@@ -55,6 +55,9 @@ export function convertToJson(res) {
 }
 
 export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = true) {
+  if (!list) {
+    return;
+  }
   const htmlStrings = list.map(templateFn);
 
   if (clear) {

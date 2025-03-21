@@ -202,6 +202,26 @@ button {
   grid-column: 3;
 }
 
+.categories {
+  display: flex;
+  justify-content: space-around;
+  padding: 0.5em;
+}
+.categories a {
+  text-decoration: none;
+  color: var(--dark-grey);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.categories a:hover {
+  color: var(--primary-color);
+}
+.categories svg {
+  max-height: 55px;
+  max-width: 70px;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
