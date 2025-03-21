@@ -2,7 +2,7 @@ import { getLocalStorage } from "./utils.mjs";
 import {loadHeaderFooter} from './utils.mjs';
 
 function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart");
+  const cartItems = getLocalStorage("so-cart") || [];
   let cartTotal = 0;
   const htmlItems = cartItems.map((item) => {
     if (!item?.Id) return;
