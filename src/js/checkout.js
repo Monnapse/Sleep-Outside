@@ -1,6 +1,7 @@
-import ProductData from "./ProductData.mjs";
+import ExternalServices from "./ExternalServices.mjs";
 import CheckoutProcess from "./CheckoutProcess.mjs";
 import { loadHeaderFooter } from "./utils.mjs";
+import { formDataToJSON } from "./utils.mjs";
 
 loadHeaderFooter();
 
@@ -11,7 +12,8 @@ const checkoutProcess = new CheckoutProcess(
 checkoutProcess.init();
 //checkoutProcess.displayOrderTotals();
 
-const zipInput = document.querySelector("#zip-code");
+const zipInput = document.querySelector("#zip");
+const form = document.querySelector("form");
 
 zipInput.addEventListener("input", (e) => {
     const zipCode = zipInput.value;
@@ -20,4 +22,12 @@ zipInput.addEventListener("input", (e) => {
     {
         checkoutProcess.calculateItemSummary();
     }
+});
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    console.log("Order Submitted!");
+    const checkout = checkoutProcess.checkout(
+        formDataToJSON(form)
+    );
 });
