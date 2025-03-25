@@ -18,9 +18,10 @@ export default class ProductDetails {
   }
 
   async getData() {
-    return fetch(this?.dataSource?.path)
-      .then(convertToJson)
-      .then((data) => data);
+    return await this.dataSource.getData();
+    //return //fetch(this?.dataSource?.path)
+      //.then(convertToJson)
+      //.then((data) => data);
   }
 
   async getProductData() {
@@ -62,9 +63,10 @@ export default class ProductDetails {
   },
 
         */
+    console.log(this.product)
     document.title = `Sleep Outside | ${this.product?.NameWithoutBrand}`;
     document.getElementById("productBrand").innerText = this?.product.Brand?.Name;
-    document.getElementById("productImage").src = this.product?.Image;
+    document.getElementById("productImage").src = this.product?.Image? this.product?.Image : this.product?.Images?.PrimaryExtraLarge;
     document.getElementById("productName").innerText = this.product?.Name;;
     document.getElementById("productPrice").innerText = `$${this.product?.FinalPrice}`;
     document.getElementById("productDescription").innerHTML = this.product?.DescriptionHtmlSimple;

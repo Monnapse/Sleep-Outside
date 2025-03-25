@@ -81,7 +81,7 @@ header {
   color: var(--tertiary-color);
 }
 
-button {
+button, .button {
   padding: 0.5em 2em;
   background-color: var(--secondary-color);
   color: white;
@@ -220,6 +220,119 @@ button {
 .categories svg {
   max-height: 55px;
   max-width: 70px;
+}
+
+.cart-footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.5em;
+}
+
+/* Checkout Form Styles */
+.checkout-form {
+  max-width: 600px;
+  margin: 2em auto;
+  padding: 1em;
+  border: 1px solid var(--light-grey);
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.checkout-form h2 {
+  text-align: center;
+  margin-bottom: 1em;
+  color: var(--dark-grey);
+}
+
+.checkout-form fieldset {
+  border: 1px solid var(--light-grey);
+  border-radius: 8px;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+.checkout-form legend {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.checkout-form label {
+  display: block;
+  margin-bottom: 0.5em;
+  font-size: var(--small-font);
+  color: var(--dark-grey);
+}
+
+.checkout-form input {
+  width: 100%;
+  padding: 0.5em;
+  margin-bottom: 1em;
+  border: 1px solid var(--light-grey);
+  border-radius: 4px;
+  font-size: var(--font-base);
+}
+
+.checkout-form button {
+  width: 100%;
+  padding: 0.75em;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: var(--large-font);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.checkout-form button:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Order Summary Styles */
+.order-summary {
+  max-width: 600px;
+  margin: 2em auto;
+  padding: 1em;
+  border: 1px solid var(--light-grey);
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.order-summary h3 {
+  text-align: center;
+  margin-bottom: 1em;
+  color: var(--dark-grey);
+}
+
+.order-summary p {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5em 0;
+  font-size: var(--font-base);
+  color: var(--dark-grey);
+}
+
+.order-summary p strong {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .checkout-form,
+  .order-summary {
+    padding: 1em;
+    margin: 1em;
+  }
+
+  .checkout-form input,
+  .checkout-form button {
+    font-size: var(--small-font);
+  }
+
+  .order-summary p {
+    font-size: var(--small-font);
+  }
 }
 
 @media screen and (min-width: 500px) {

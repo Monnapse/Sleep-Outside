@@ -1,10 +1,11 @@
 import { renderListWithTemplate } from "./utils.mjs";
 
 function productCardTemplate(product) {
+  console.log(product);
   const productImage = product.Image ? product.Image : product.Images ? product.Images.PrimaryMedium : null;
   return `
     <li class="product-card">
-        <a href="/product_pages/index.html?product=${product?.Id}">
+        <a href="/product_pages/index.html?product=${product?.Id}&category=${product?.Category}">
         <img
           src="${productImage}"
           alt="${product?.NameWithoutBrand}"
