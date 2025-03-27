@@ -18,6 +18,7 @@ export default class ExternalServices {
   }
 
   async checkout(payload) {
+    console.log(payload);
     const options = {
       method: "POST",
       headers: {

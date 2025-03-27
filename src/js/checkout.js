@@ -3,6 +3,8 @@ import CheckoutProcess from "./CheckoutProcess.mjs";
 import { loadHeaderFooter } from "./utils.mjs";
 import { formDataToJSON } from "./utils.mjs";
 
+console.log("Checkout Page");
+
 loadHeaderFooter();
 
 const checkoutProcess = new CheckoutProcess(
@@ -27,7 +29,13 @@ zipInput.addEventListener("input", (e) => {
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     console.log("Order Submitted!");
-    const checkout = checkoutProcess.checkout(
-        formDataToJSON(form)
-    );
+
+    const chk_status = form.checkValidity();
+    form.reportValidity();
+    if (chk_status)
+    {
+        const checkout = checkoutProcess.checkout(
+            formDataToJSON(form)
+        );
+    }
 });

@@ -1,4 +1,4 @@
-import ProductData from './ProductData.mjs';
+import ExternalServices from "./ExternalServices.mjs";
 import ProductList from './ProductList.mjs';
 import {loadHeaderFooter, getParam} from './utils.mjs';
 
@@ -13,7 +13,7 @@ function capitalizeFirstWord(string) {
 const titleElement = document.getElementById('title');
 titleElement.innerText = `Top Product: ${capitalizeFirstWord(category)}`;
 
-const dataSource = new ProductData(category);
+const dataSource = new ExternalServices(category);
 const listElement = document.getElementById('productList');
 const productList = new ProductList(category, dataSource, listElement);
 productList.init();
