@@ -1,10 +1,16 @@
 import { getParam } from './utils.mjs';
-import ProductData from './ProductData.mjs';
+import ExternalServices from "./ExternalServices.mjs";
 import ProductDetails from './ProductDetails.mjs';
+import {loadHeaderFooter} from './utils.mjs';
+
+loadHeaderFooter();
 
 
 const productId = getParam('product');
-const dataSource = new ProductData('tents');
+const category = getParam('category');
+const dataSource = new ExternalServices(category);
+
+console.log(dataSource.getData(category));
 
 async function initProduct() {
     const product = new ProductDetails(productId, dataSource);
